@@ -4,7 +4,7 @@
         <v-icon :style="'float:right; cursor:pointer; margin-top:6px; margin-right:6px'" color="red" @click="deleteEmp">mdi-close</v-icon>
         <v-icon :style="'float:right; cursor:pointer; margin-top:6px; margin-right:6px'" color="primary" @click="overlay = !overlay">mdi-pencil</v-icon>
           <v-row flex>
-          <v-col sm="1">
+          <v-col sm="1" class="col1">
            <img src="~static/employee-card.png"/>
           </v-col>
           <v-col sm="11">
@@ -13,7 +13,7 @@
           </v-row>
           
         <v-row flex>
-          <v-col sm="1">
+          <v-col sm="1" class="col1">
         <img src="~/static/gender.png"/>
         </v-col>
           <v-col sm="11">
@@ -21,24 +21,27 @@
          </v-col>
           </v-row>
           <v-row flex>
-          <v-col sm="1">
-        <img src="~/static/get-cash.png"/>
+          <v-col sm="1" class="col1">
+        <img src="~/static/get-cash.png" />
         </v-col>
           <v-col sm="11">
         <h3>{{ employee.salary }}</h3>
         </v-col>
           </v-row>
           <v-row flex>
-          <v-col sm="1">
+          <v-col sm="1" class="col1">
         <img src="~/static/birth-date.png"/>
         </v-col>
-          <v-col sm="11">
+          <v-col sm="11" class="col1">
         <h3>{{ employee.birthdate }}</h3>
         </v-col>
           </v-row>
       <v-overlay :value="overlay" >
        <Update :id="this.$route.params.id" :employee="employee"/>
      </v-overlay>
+      </v-card>
+      <v-card v-else>
+         <v-card-title>Empty</v-card-title>
       </v-card>
       
     </v-container>
@@ -72,7 +75,7 @@ export default {
           }, (error) => {
             console.log(error);
           });
-          this.$router.push("/")
+          this.$router.go()
         }
     }
 }
@@ -91,8 +94,17 @@ export default {
  
  h3 {
    margin-top: 6px;
+   margin-left: 25px;
  }
  img {
    margin-left: 10px;
  }
+ .col1{
+   flex-grow: 0;
+ }
+@media only screen and (max-width: 600px) {
+  .cards {
+    width: 100%;
+  }
+}
 </style>

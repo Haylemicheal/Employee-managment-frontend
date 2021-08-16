@@ -40,10 +40,12 @@
             v-on="on"
           ></v-text-field>
         </template>
+        
         <v-date-picker
-          v-model="Birthdate"
+          v-model="newbirthdate"
           scrollable
         >
+           
           <v-spacer></v-spacer>
           <v-btn
             text
@@ -100,6 +102,7 @@ export default {
             Salary: this.employee.salary,
             Gender: this.employee.gender,
             newgender: "",
+            newbirthdate:"",
             modal: false,
             newemployee: {},
             nameRules: [
@@ -109,7 +112,7 @@ export default {
         }
     },
     created(){
-        console.log(this.employee)
+        
     },
     methods:{
         async onSubmit() {
@@ -117,11 +120,11 @@ export default {
               "id": this.id,
               "firstName": this.firstName,
               "lastName": this.lastName,
-              "birthdate": this.Birthdate,
+              "birthdate": this.newbirthdate==""?this.Birthdate:this.newbirthdate,
               "gender": this.newgender==""?this.Gender:this.newgender,
               "salary": this.Salary
             }
-            console.log(this.newemployee.gender)
+            
             await this.$store.dispatch("updateEmployee", this.newemployee);
             await this.$store.dispatch("getEmployees");
             this.$router.go()

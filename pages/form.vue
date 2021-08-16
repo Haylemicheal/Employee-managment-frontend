@@ -89,6 +89,7 @@
   </v-form>
 </template>
 <script>
+import Api from '~/apis/Api'
 export default {
     data(){
         return {
@@ -114,10 +115,17 @@ export default {
               "gender": this.Gender,
               "salary": this.Salary
             }
-            await this.$store.dispatch("postEmployees", this.newemployee);
-            await this.$store.dispatch("getEmployees");
-            this.$router.go()
-        },
+            //await this.$store.dispatch("postEmployees", this.newemployee);
+            //await this.$store.dispatch("getEmployees");
+            Api.post('/employee',this.newemployee).
+              then((response) => {
+              console.log(response);
+             }, (error) => {
+              console.log(error);
+             });
+              
+              this.$router.go()
+          },
         cancel() {
           this.$router.go()
         }

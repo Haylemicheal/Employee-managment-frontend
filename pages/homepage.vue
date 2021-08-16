@@ -9,11 +9,11 @@
       <v-card class="cards" elevation="10" v-for="employee in employees" :key="employee.id" shaped>
          <NuxtLink :to="'detailpage/'+employee.id" class="link">
          
-          <v-row flex>
-          <v-col sm="1">
+          <v-row flex class="row">
+          <v-col lg="1" sm="1" class="col1">
            <img src="~/static/employee-card.png"/>
           </v-col>
-          <v-col sm="11">
+          <v-col lg="11" sm="11">
           <h3>{{ employee.firstName }} {{ employee.lastName }}</h3>
           </v-col>
           </v-row>
@@ -79,7 +79,7 @@ components: {
    padding-top: 2%;
  }
  h3 {
-   margin-top: 6px;
+   margin-left: 10px;
  }
  img {
    margin-left: 10px;
@@ -93,6 +93,12 @@ components: {
    color: white;
    padding-top: 2px;
    padding-bottom: 5px;
+ }
+ .col1{
+   flex-grow: 0;
+ }
+ .row{
+   align-items: center;
  }
 
 </style>
