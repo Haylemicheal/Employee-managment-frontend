@@ -36,6 +36,7 @@ This page diplayes the detail of a single employee and The admin can update and 
 
 ## Docker images
 The docker images of the project are pushed to the following repositories of the dockerhub
+  * haylemichealberihun/empman-front
   * haylemichealberihun/employee-managment
   * haylemichealberihun/eureka-server
   * haylemichealberihun/postgres-emp
